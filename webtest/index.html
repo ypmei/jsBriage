@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no"/>
+            
+    <style>
+        body{
+            background: #F1F1F1;
+        }
+    </style>
+    <script src="./jsBriage.js"></script>
+    <script>
+        function nameCallback(data){
+            document.getElementById('name').innerHTML = JSON.stringify(data)
+        }
+        function nativeCallClick(){
+            var params = {
+                key: 88
+            }
+            Briage.nativeCall(params, nameCallback)
+        }
+    </script>
+    </head>
+    <body>
+        <button onClick="nativeCallClick()">H5-->Native</button>
+        name:<span id="name"></span>
+        <br>
+    </body>
+</html>

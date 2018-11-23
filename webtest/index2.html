@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,user-scalable=no"/>
+            </head>
+    <style>
+        body{
+            background: #F1F1F1;
+        }
+    </style>
+    <script>
+        //添加事件
+        function addEvent(evName, callback){
+            window.addEventListener(evName, callback, false)
+        }
+        function removeEvent(handle){
+            var evName = getHandleKey(handle).e
+            window.removeEventListener(evName, function(){}, false)
+        }
+        //参数池
+        var _paramsStore = {
+            save: function(key, params){
+                this[key] = params
+            },
+            get: function(key){
+                var params = this[key]
+                delete this[key]
+                return params
+            }
+        }
+        //回调池
+        var _callbackStore = {
+            save: function(key, callback){
+                this[key] = callback
+            }
+        }
+        
+        function getHandleKey(handle){
+           return {
+                p: 'param_'+handle,
+                c: 'cb'+handle,
+                e: 'event'+handle
+            }
+        }
+    
+        //客户端接受到请求后，会使用handle调用getParam从参数池中获取对应到参数
+        function getParam (handle) {
+            const key = getHandleKey(handle).p
+            return _paramsStore.get(key)
+        }
+        //客户端发送数据
+        function postMessage(e) {
+            //客户端携带handle和data调用postMessage；
+            //const { handle, data } = e
+            var dd = {data:2222,handle:1}
+           // var data = e.data, handle = e.handle;
+           var data = dd.data, handle = dd.handle
+            
+            //获取对应的自定义事件名 e.handle;
+            const evName = getHandleKey(handle).e
+            //创建并触发自定义事件
+            //fireEvent(evName, data)
+            nameCallback(data)
+        }
+    
+        function fireEvent(evName, data) {
+            var eventItem
+            if(typeof window.CustomEvent === 'function') {
+                eventItem = new window.CustomEvent(evName, {
+                  bubbles: true,
+                  cancelable: true
+                })
+            } else if (typeof document.createEvent === 'function')){
+                eventItem = document.createEvent('event')
+                eventItem.initEvent(evName, true, true)
+            }
+            
+            if(data&&eventItem){
+                eventItem.data = data
+            }
+            
+            if(eventItem) {
+                window.dispatchEvent(eventItem)
+            } else {
+                console.log('Briage Error : dispatchEvent')
+            }
+        }
+    
+    
+    //H5-->Native
+    var i = 0;
+    function nativeCall(params, callback){
+        params = params ? JSON.stringify(params) : ''
+        
+        var handle = 1//i++;
+        var handleKey = getHandleKey(handle)
+        _paramsStore.save(handleKey.p, params)
+        
+        if(typeof callback === 'function'){
+            _callbackStore.save(handlekey.c, callback)
+            //添加回调事件，回调成功后，删除事件
+            addEvent(handleKey.e, function(e) {
+               // const { data, handle } = e.data
+               var data = e.data
+               var handle = e.handle
+                     
+                removeEvent(handle)
+                callback(null, data)
+            })
+        }
+        
+        send('lagou://doAction?handle='+handle)
+    }
+    
+    function send(scheme){
+        setTimeout(function() {
+           //创建iframe并设置src
+           const iframe = document.createElement('iframe')
+           iframe.src = scheme
+           iframe.style.display = 'none'
+           document.body.appendChild(iframe)
+           //延迟删除节点
+           setTimeout(function(){
+              iframe.parentNode.removeChild(iframe)
+              }, 300)
+           }, 0)
+    }
+    
+    function nameCallback(data){
+        document.getElementById("name").innerHTML = JSON.stringify(data)
+    }
+    
+    function renderClick(){
+        var params = {
+            a: 1,
+            b: 2
+        }
+        nativeCall(params, nameCallback)
+    }
+    </script>
+    <body>
+        <a href=“lagou://doAction?a=1&b=2”>执行swift</a>
+        <button onClick="renderClick()">H5-->Native</button>
+        <div id="name"></div>
+    </body>
+</html>

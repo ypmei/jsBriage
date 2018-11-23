@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4BDCB70721A7BC4F00059EDC /* jsBriage.js in Resources */ = {isa = PBXBuildFile; fileRef = 4BDCB70621A7BC4F00059EDC /* jsBriage.js */; };
 		4BF2AB2321A3BC3300948F98 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF2AB2221A3BC3300948F98 /* AppDelegate.swift */; };
 		4BF2AB2521A3BC3300948F98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF2AB2421A3BC3300948F98 /* ViewController.swift */; };
 		4BF2AB2821A3BC3300948F98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BF2AB2621A3BC3300948F98 /* Main.storyboard */; };
@@ -14,6 +15,7 @@
 		4BF2AB2D21A3BC3500948F98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4BF2AB2B21A3BC3500948F98 /* LaunchScreen.storyboard */; };
 		4BF2AB3821A3BC3500948F98 /* webtestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF2AB3721A3BC3500948F98 /* webtestTests.swift */; };
 		4BF2AB4321A3BC3500948F98 /* webtestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BF2AB4221A3BC3500948F98 /* webtestUITests.swift */; };
+		4BF2AB5321A649E100948F98 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 4BF2AB5221A649E100948F98 /* index.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4BDCB70621A7BC4F00059EDC /* jsBriage.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = jsBriage.js; sourceTree = "<group>"; };
 		4BF2AB1F21A3BC3300948F98 /* webtest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = webtest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF2AB2221A3BC3300948F98 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4BF2AB2421A3BC3300948F98 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +50,7 @@
 		4BF2AB3E21A3BC3500948F98 /* webtestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = webtestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4BF2AB4221A3BC3500948F98 /* webtestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webtestUITests.swift; sourceTree = "<group>"; };
 		4BF2AB4421A3BC3500948F98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4BF2AB5221A649E100948F98 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,8 @@
 				4BF2AB2921A3BC3500948F98 /* Assets.xcassets */,
 				4BF2AB2B21A3BC3500948F98 /* LaunchScreen.storyboard */,
 				4BF2AB2E21A3BC3500948F98 /* Info.plist */,
+				4BF2AB5221A649E100948F98 /* index.html */,
+				4BDCB70621A7BC4F00059EDC /* jsBriage.js */,
 			);
 			path = webtest;
 			sourceTree = "<group>";
@@ -230,8 +236,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BF2AB2D21A3BC3500948F98 /* LaunchScreen.storyboard in Resources */,
+				4BDCB70721A7BC4F00059EDC /* jsBriage.js in Resources */,
 				4BF2AB2A21A3BC3500948F98 /* Assets.xcassets in Resources */,
 				4BF2AB2821A3BC3300948F98 /* Main.storyboard in Resources */,
+				4BF2AB5321A649E100948F98 /* index.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
